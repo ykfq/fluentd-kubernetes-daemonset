@@ -14,6 +14,7 @@ ENV FLUENTD_DISABLE_BUNDLER_INJECTION 1
 
 COPY Gemfile* /fluentd/
   RUN buildDeps="sudo make gcc g++ libc-dev ruby-dev libffi-dev build-essential patch zlib1g-dev liblzma-dev git" \
+     && sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
      && apt-get update \
      && apt-get upgrade -y \
      && apt-get install \
